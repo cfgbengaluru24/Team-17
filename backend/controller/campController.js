@@ -2,7 +2,9 @@ const express = require('express');
 const Camp = require('../models/Camp');
 const Admin = require('../models/Admin');
 const User = require('../models/User');
-const {authorizeRoles} = require('../middleware/authMiddleware');
+//  const {authorizeRoles} = require('../middleware/authMiddleware');
+const Beneficiary = require('../models/Beneficiary');
+const Doctor = require('../models/Doctor');
 
 exports.createCamp = async (req, res) => {
     try {
@@ -12,8 +14,11 @@ exports.createCamp = async (req, res) => {
         const newCamp = new Camp({
             camp_name,
             total_number_of_people,
+            beneficiary_id: [],
+            doctor_id: [],
             school_email,
-            status
+            status,
+            date_of_camp: new Date()
         });
 
         // Save the camp
@@ -47,8 +52,8 @@ exports.getCampById = async (req, res) => {
 
         // Find the camp
         const camp = await Camp.findById(id)
-            .populate('people_treated_info.beneficiary_id')
-            .populate('people_treated_info.doctor_id');
+            .populate('beneficiary_id')
+            .populate('doctor_id');
         if (!camp) return res.status(404).json({ message: 'Camp not found' });
 
         res.status(200).json({ camp });
@@ -60,10 +65,11 @@ exports.getCampById = async (req, res) => {
 exports.getAllCamps = async (req, res) => {
     try {
         const camps = await Camp.find()
-            .populate('people_treated_info.beneficiary_id')
-            .populate('people_treated_info.doctor_id');
+            .populate('beneficiary_id')
+            .populate('doctor_id');
         res.status(200).json({ camps });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Server error', error });
     }
 }

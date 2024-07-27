@@ -9,7 +9,7 @@ connectDB();
 
 //import routes
 const auth = require('./routes/authRoute');
-
+const camp=require('./routes/campRoute');
 //app config
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(cookieParser());
 
 //use routes
 app.use('/api/auth', auth);
+app.use('/api/camp',camp);
 //listen
 
 
