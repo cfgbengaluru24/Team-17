@@ -33,25 +33,33 @@ exports.createBeneficiary = async (req, res) => {
             level
         } = req.body;
 
+        if (!name || !phonenumber || !age || !allergic_information || !medico || 
+            !tooth_number || !tooth_condition || periodontal_probing_depths === undefined || 
+            bleeding_on_probing === undefined || !plaque_index || !calculus_index || 
+            !gingival_index || !oral_cancer_screening_result || !prescription || 
+            isAnemic === undefined || level === undefined) {
+            return res.status(400).json({ message: 'All required fields must be provided' });
+        }
+
         // Create a new beneficiary
         const newBeneficiary = new Beneficiary({
-            name,
-            phonenumber,
-            age,
-            allergic_information,
-            medico,
-            images,
-            tooth_number,
-            tooth_condition,
-            periodontal_probing_depths,
-            bleeding_on_probing,
-            plaque_index,
-            calculus_index,
-            gingival_index,
-            oral_cancer_screening_result,
-            prescription,
-            isAnemic,
-            level
+            name :name,
+            phonenumber:phonenumber,
+            age:age,
+            allergic_information:allergic_information,
+            medico:medico,
+            images:images,
+            tooth_number:tooth_number,
+            tooth_condition:tooth_condition,
+            periodontal_probing_depths:periodontal_probing_depths,
+            bleeding_on_probing:bleeding_on_probing,
+            plaque_index:plaque_index,
+            calculus_index:calculus_index,
+            gingival_index:gingival_index,
+            oral_cancer_screening_result:oral_cancer_screening_result,
+            prescription:prescription,
+            isAnemic:isAnemic,
+            level:level
         });
 
         // Save the beneficiary
@@ -101,4 +109,5 @@ exports.getBeneficiaryById = async (req, res) => {
         res.status(500).json({ message: 'Server error', error });
     }
 }
+
 

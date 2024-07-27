@@ -8,9 +8,9 @@ dotenv.config();
 connectDB();
 
 //import routes
-const auth = require('./routes/authRoute');
-const camp=require('./routes/campRoute');
-const beneficiary=require('./routes/beneficiaryRoute');
+const auth = require("./routes/authRoute");
+const camp = require("./routes/campRoute");
+const beneficiary = require("./routes/beneficiaryRoute");
 //app config
 const app = express();
 
@@ -23,9 +23,9 @@ app.use(cors());
 app.use(cookieParser());
 
 //use routes
-app.use('/api/auth', auth);
-app.use('/api/camp',camp);
-app.use('/api/beneficiary',beneficiary);
+app.use("/api/auth", auth);
+app.use("/api/camp", camp);
+app.use("/api/beneficiary", beneficiary);
 //listen
 
 app.listen(port, () => {
