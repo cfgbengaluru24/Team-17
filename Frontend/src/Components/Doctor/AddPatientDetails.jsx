@@ -3,6 +3,7 @@ import addPatient from "../../services/addPatient";
 import { toast } from "react-toastify";
 import axios from "axios";
 
+
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -64,20 +65,9 @@ const AddCampForm = () => {
         >
           Add New Beneficiary
         </h1>
-<<<<<<< HEAD
-        <form onSubmit={(e) => handleSubmit(e)} className="flex flex-wrap -mx-4">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingBottom: "20px",
-          }}
-=======
         <form
           onSubmit={(e) => handleSubmit(e)}
           className="flex flex-wrap -mx-4"
->>>>>>> 2386a255110c63a2747442a97b98776c34dc57b5
         >
           <div
             style={{
@@ -87,12 +77,6 @@ const AddCampForm = () => {
               paddingBottom: "20px",
             }}
           >
-<<<<<<< HEAD
-            Use Doctor's Voice
-          </button>
-          </div>
-          </form>
-=======
             <button
               style={{
                 backgroundColor: "#fe725e",
@@ -114,7 +98,6 @@ const AddCampForm = () => {
             </button>
           </div>
         </form>
->>>>>>> 2386a255110c63a2747442a97b98776c34dc57b5
 
         <form onSubmit={handleSubmit} className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4 mb-6">
@@ -434,6 +417,7 @@ const AddCampForm = () => {
                 width: "fit-content",
                 padding: "15px",
               }}
+              
             >
               Add Beneficiary
             </button>

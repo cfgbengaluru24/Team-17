@@ -86,7 +86,7 @@ const CampHome = () => {
         "http://localhost:3000/api/camp",
       );
       setCamps(response.data.camps)
-      console.log(response);
+      // console.log(response);
       toast.success(response.data.message);
       // setCamps([])
     } catch (error) {

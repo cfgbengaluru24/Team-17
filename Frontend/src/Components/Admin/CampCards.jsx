@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 
-const CampCards = ({camp}) => {
+const CampCards = ({ camp }) => {
+  // console.log(camp)
+  const navigate = useNavigate()
   return (
     <div
       style={{ backgroundColor: "white" }}
@@ -18,7 +21,7 @@ const CampCards = ({camp}) => {
             style={{ color: "black" }}
             className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
           >
-            Zero Cavity Camp 2024
+            {camp?.camp_name}
           </h5>
         </a>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -29,6 +32,7 @@ const CampCards = ({camp}) => {
           href="#"
           style={{ backgroundColor: "#fe725e", color: "white" }}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          onClick={() => {navigate("/campInfo");}}
         >
           More Details
           <svg
