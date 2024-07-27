@@ -7,7 +7,7 @@ const BeneficiarySchema = new Schema({
     age: { type: Number, required: true },
     allergic_information: { type: String, required: true },
     medico: { type: String, required: true },
-    images: [{
+    images: [{  
         type: String,
         required: false // You can make this required if every beneficiary must have images
     }],
@@ -21,7 +21,7 @@ const BeneficiarySchema = new Schema({
     plaque_index: { type: Number, required: true },
     calculus_index: { type: Number, required: true },
     gingival_index: { type: Number, required: true },
-    oral_cancer_screening_result: { type: String, required: true },
+    oral_cancer_screening_result:    { type: String, required: true },
     prescription: { type: String, required: true },
     isAnemic: { type: Boolean, required: true },
     level: { type: Number, required: true }
