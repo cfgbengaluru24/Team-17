@@ -25,7 +25,7 @@ const Login = () => {
 
   const loginSubmitHandler = async (e) => {
     e.preventDefault();
-    // console.log(formData)
+    console.log(formData)
     setLoading(true);
     const payload = {
       email: `${formData.email}`,
@@ -33,14 +33,17 @@ const Login = () => {
     };
     try {
       let res = await axios.post("http://localhost:3000/api/auth/login", payload);
-      // console.log(res.data.message)
+      console.log(res.data)
       setFormData({
         email: "",
         password: "",
       });
 
       let role = res.data.role;
+      let token = res.data.token;
       console.log(res, "login data");
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
       setLoading(false);
       toast.success(res.data.message);
       // console.log(object)
