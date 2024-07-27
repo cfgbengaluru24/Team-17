@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
+import './CSS/Login.css'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const { dispatch } = useContext(authContext);
 
   const handleInputChange = (e) => {
     e.preventDefault();
