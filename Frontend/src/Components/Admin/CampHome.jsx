@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import CampCards from "./CampCards";
 import AdminNavbar from "./AdminNavbar";
-import getCamps from "../../services/getCamps";
 
 const UpcomingCards = () => {
   // const upcomingCamps =
@@ -66,33 +66,45 @@ const CompletedCards = ({ camps }) => {
   );
 };
 
-const CampHome = () => (
-  <div
-    style={{ backgroundColor: "white" }}
-    className="min-h-screen bg-gray-100 dark:bg-gray-900"
-  >
-    <AdminNavbar />
+const CampHome = () => {
+  const [camps, setCamps] = useState([]);
 
-    <main className="p-4">
-      <div className="create-top flex items-center justify-between container mx-auto">
-        <h1 className=" font-bold text-[25px]">Your Camps</h1>
-        <button className="btn">Create</button>
-      </div>
-      <div className="container mx-auto flex justify-center">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="border-r border-gray-400  pr-4">
-            <UpcomingCards />
-          </div>
-          <div className="border-r border-gray-400 px-4">
-            <LiveCards />
-          </div>
-          <div className="px-4">
-            <CompletedCards />
+  useEffect(() => {
+    getCamps()
+  }, [])
+  
+  const getCamps = async () => {
+    
+  }
+
+  return (
+    <div
+      style={{ backgroundColor: "white" }}
+      className="min-h-screen bg-gray-100 dark:bg-gray-900"
+    >
+      <AdminNavbar />
+
+      <main className="p-4">
+        <div className="create-top flex items-center justify-between container mx-auto">
+          <h1 className=" font-bold text-[25px]">Your Camps</h1>
+          <button className="btn">Create</button>
+        </div>
+        <div className="container mx-auto flex justify-center">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="border-r border-gray-400  pr-4">
+              <UpcomingCards />
+            </div>
+            <div className="border-r border-gray-400 px-4">
+              <LiveCards />
+            </div>
+            <div className="px-4">
+              <CompletedCards />
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-  </div>
-);
+      </main>
+    </div>
+  );
+};
 
 export default CampHome;
