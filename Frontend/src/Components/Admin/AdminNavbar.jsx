@@ -17,6 +17,7 @@ const navLinks = [
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const role = localStorage.getItem("role");
 
 
 
@@ -83,7 +84,7 @@ const Header = () => {
                       alt=""
                     />
                   </figure>
-                <h2>Doctor</h2>
+                <h2>{role}</h2>
               </div>
 
             <span className="md:hidden" onClick={toggleMenu}>

@@ -19,6 +19,7 @@ import CuredPatients from "../../assets/images/CuredPatients.png";
 
 const Dashboard = () => {
   // Defined dataset for statistics
+  // console.log(role)
   const data = [
     {
       title: "Camps",
