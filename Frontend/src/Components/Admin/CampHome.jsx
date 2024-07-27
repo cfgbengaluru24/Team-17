@@ -66,6 +66,30 @@ const CompletedCards = ({ camps }) => {
   );
 };
 
+<<<<<<< HEAD
+const CampHome = () => (
+  <div
+    style={{ backgroundColor: "white" }}
+    className="min-h-screen bg-gray-100 dark:bg-gray-900"
+  >
+    <AdminNavbar />
+
+    <main className="p-4">
+      <div className="create-top flex items-center justify-between container mx-auto">
+        <h1 className=" font-bold text-[25px]">Your Camps</h1>
+        <button className="btn">Create</button>
+      </div>
+      <div className="container mx-auto flex justify-center">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="border-r border-gray-400  pr-4">
+            <UpcomingCards />
+          </div>
+          <div className="border-r border-gray-400 px-4">
+            <LiveCards />
+          </div>
+          <div className="px-4">
+            <CompletedCards />
+=======
 const CampHome = () => {
   const [camps, setCamps] = useState([]);
 
@@ -96,6 +120,7 @@ const CampHome = () => {
             <div className="px-4">
               <CompletedCards camps={camps} />
             </div>
+>>>>>>> e55f540aefe18cb549304074628e145b45cdfce1
           </div>
         </div>
       </main>
