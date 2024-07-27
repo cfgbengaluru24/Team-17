@@ -20,12 +20,14 @@ const AddCampForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    
+
     e.preventDefault();
+    console.log(formData)
+    console.log(token)
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/beneficiary/create",formData,{
-                headers:{authorization:`${token}`}
+        "http://localhost:3000/api/camp/create",formData,{
+                Headers:{Authorization:`Bearer ${token}`}
             }
       );
       console.log( response);
@@ -75,8 +77,8 @@ const AddCampForm = () => {
             <input
               type="text"
               id="campName"
-              name="campName"
-              value={formData.campName}
+              name="camp_name"
+              value={formData.camp_name}
               onChange={handleChange}
               required
               className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
