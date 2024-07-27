@@ -66,7 +66,6 @@ const CompletedCards = ({ camps }) => {
   );
 };
 
-<<<<<<< HEAD
 const CampHome = () => (
   <div
     style={{ backgroundColor: "white" }}
@@ -89,43 +88,11 @@ const CampHome = () => (
           </div>
           <div className="px-4">
             <CompletedCards />
-=======
-const CampHome = () => {
-  const [camps, setCamps] = useState([]);
-
-  useEffect(() => {
-    const fetchCamps = async () => {
-      const allCamps = await getCamps();
-      setCamps(allCamps);
-    };
-
-    fetchCamps();
-  }, []);
-
-  return (
-    <div
-      style={{ backgroundColor: "white" }}
-      className="min-h-screen bg-gray-100 dark:bg-gray-900"
-    >
-      <AdminNavbar />
-      <main className="p-4">
-        <div className="container mx-auto flex justify-center">
-          <div className="grid grid-cols-3 gap-4">
-            <div className="border-r border-gray-400 pr-4">
-              <UpcomingCards camps={camps} />
-            </div>
-            <div className="border-r border-gray-400 px-4">
-              <LiveCards camps={camps} />
-            </div>
-            <div className="px-4">
-              <CompletedCards camps={camps} />
-            </div>
->>>>>>> e55f540aefe18cb549304074628e145b45cdfce1
           </div>
         </div>
-      </main>
-    </div>
-  );
-};
+      </div>
+    </main>
+  </div>
+);
 
 export default CampHome;

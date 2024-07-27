@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 import  { useState } from "react";
 import axios from "axios";
+import { BASE_URL, token } from "../../../config";
 
-=======
-import React, { useState } from "react";
-import { addCamp } from "../../services/addCamp";
->>>>>>> e55f540aefe18cb549304074628e145b45cdfce1
 
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
@@ -24,45 +20,27 @@ const AddCampForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     try {
-<<<<<<< HEAD
       const response = await axios.post(
-        "http://localhost:3000/api/beneficiary/create",formData
+        "http://localhost:3000/api/beneficiary/create",formData,{
+                headers:{authorization:`${token}`}
+            }
       );
       console.log( response);
     } catch (error) {
       console.error('Error submitting form data:', error);
-=======
-      const response = await addCamp(formData);
-      console.log("Form Data Submitted:", response);
-      // Handle success, e.g., display a success message or redirect
-      console.log("Camp added successfully!");
-      setFormData({
-        campName: "",
-        totalPeople: "",
-        date: "",
-        schoolEmail: "",
-        status: "",
-      });
-    } catch (error) {
-      console.error("Error submitting form data:", error);
-      // Handle error, e.g., display an error message
-      alert("Error submitting form data. Please try again.");
->>>>>>> e55f540aefe18cb549304074628e145b45cdfce1
     }
 
     //console.log("Form Data Submitted:", formData);
     // Reset form after submission
-<<<<<<< HEAD
     setFormData({
       camp_name: "",
       total_number_of_people: "",
       school_email: "",
       status: "",
     });
-=======
->>>>>>> e55f540aefe18cb549304074628e145b45cdfce1
   };
 
   return (
@@ -152,13 +130,8 @@ const AddCampForm = () => {
             <input
               type="email"
               id="email"
-<<<<<<< HEAD
-              name="email"
+              name="school_email"
               value={formData.school_email}
-=======
-              name="schoolEmail"
-              value={formData.schoolEmail}
->>>>>>> e55f540aefe18cb549304074628e145b45cdfce1
               onChange={handleChange}
               required
               className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
