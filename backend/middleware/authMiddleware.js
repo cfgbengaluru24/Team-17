@@ -3,7 +3,14 @@ const jwt = require('jsonwebtoken');
 
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+    
+    // Check if the authHeader starts with 'Bearer '
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ message: 'No token provided or malformed header' });
+    }
+    
+    // Extract the token from the Bearer string
+    const token = authHeader.split(' ')[1];
     
     if (!token) return res.status(401).json({ message: 'No token provided' });
 
@@ -13,6 +20,7 @@ const authenticateToken = (req, res, next) => {
         next();
     });
 };
+
 
 const authorizeRoles = (...roles) => {
     return (req, res, next) => {
