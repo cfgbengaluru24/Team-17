@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 // const User = require('../models/User'); // Adjust the path as necessary
 
 const authenticateToken = (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.token;
     if (!token) return res.status(401).json({ message: 'No token provided' });
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
