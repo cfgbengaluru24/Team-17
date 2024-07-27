@@ -17,6 +17,7 @@ const app = express();
 app.use(express.static("dist"));
 
 //middleware
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
