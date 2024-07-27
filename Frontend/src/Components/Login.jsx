@@ -51,6 +51,9 @@ const Login = () => {
       if (role == 'Admin') {
         navigate('/adminDashboard')
       }
+      if (role == "Doctor") {
+        navigate("/addPatient");
+      }
     } catch (error) {
       setLoading(false);
       // console.log(error.message)
