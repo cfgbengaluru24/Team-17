@@ -1,0 +1,35 @@
+/* doctors  */
+.find-doc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0066ff2c;
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 570px;
+    border-radius: 8px;
+}
+.inp{
+    padding: 16px;
+    background: transparent;
+    width: 100%;
+    cursor: pointer;
+}
+.inp[placeholder]{
+    color: #4E545F;
+}
+.inp:focus{
+    outline: none;
+}
+
+/* login  */
+.form-inp{
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #0066ff61;
+    line-height: 28px;
+}
+.form-inp:focus{
+    outline: none;
+    border-bottom: 1px solid #0067FF;
+}
