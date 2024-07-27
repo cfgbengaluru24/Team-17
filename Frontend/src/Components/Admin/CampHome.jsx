@@ -3,10 +3,13 @@
 import  { useEffect, useState } from "react";
 import CampCards from "./CampCards";
 import AdminNavbar from "./AdminNavbar";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const UpcomingCards = () => {
-  // const upcomingCamps =
-  //   camps?.filter((camp) => camp.status === "not yet started") || [];
+const UpcomingCards = ({ camps }) => {
+  const upcomingCamps =
+    camps?.filter((camp) => camp.status === "not yet started") || [];
+  // console.log(upcomingCamps, "up");
 
   return (
     <div>
@@ -17,16 +20,18 @@ const UpcomingCards = () => {
         Upcoming
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        {/* {upcomingCamps.map((camp) => (
-          <CampCards key={camp.id} camp={camp} />
-        ))} */}
+        {upcomingCamps.map((camp, index) => (
+          <CampCards key={index} camp={camp} />
+        ))}
       </div>
     </div>
   );
 };
 
 const LiveCards = ({ camps }) => {
-  const liveCamps = camps?.filter((camp) => camp.status === "live") || [];
+    const liveCamps =
+      camps?.filter((camp) => camp.status === "live") || [];
+    // console.log(liveCamps, "liveCamps");
 
   return (
     <div>
@@ -37,17 +42,17 @@ const LiveCards = ({ camps }) => {
         Live
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        {/* {liveCamps.map((camp) => (
-          <CampCards key={camp.id} camp={camp} />
-        ))} */}
+        {liveCamps.map((camp, index) => (
+          <CampCards key={index} camp={camp} />
+        ))}
       </div>
     </div>
   );
 };
 
 const CompletedCards = ({ camps }) => {
-  const completedCamps =
-    camps?.filter((camp) => camp.status === "finished") || [];
+    const completedCamps = camps?.filter((camp) => camp.status === "finished") || [];
+    // console.log(completedCamps, "completedCamps");
 
   return (
     <div>
@@ -58,9 +63,9 @@ const CompletedCards = ({ camps }) => {
         Completed
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        {/* {completedCamps.map((camp) => (
-          <CampCards key={camp.id} camp={camp} />
-        ))} */}
+        {completedCamps.map((camp, index) => (
+          <CampCards key={index} camp={camp} />
+        ))}
       </div>
     </div>
   );
@@ -74,7 +79,19 @@ const CampHome = () => {
   }, [])
   
   const getCamps = async () => {
-    
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/camp",
+      );
+      setCamps(response.data.camps)
+      console.log(response);
+      toast.success(response.data.message);
+      // setCamps([])
+    } catch (error) {
+      console.error("Error fetching camps", error);
+      toast.error(error.message);
+    }
+
   }
 
   return (
@@ -92,13 +109,13 @@ const CampHome = () => {
         <div className="container mx-auto flex justify-center">
           <div className="grid grid-cols-3 gap-4">
             <div className="border-r border-gray-400  pr-4">
-              <UpcomingCards />
+              <UpcomingCards camps={camps} />
             </div>
             <div className="border-r border-gray-400 px-4">
-              <LiveCards />
+              <LiveCards camps={camps} />
             </div>
             <div className="px-4">
-              <CompletedCards />
+              <CompletedCards camps={camps} />
             </div>
           </div>
         </div>
