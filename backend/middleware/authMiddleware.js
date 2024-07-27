@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 // const User = require('../models/User'); // Adjust the path as necessary
 
 const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    const authHeader = req.headers['Authorization'];
     
     // Check if the authHeader starts with 'Bearer '
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authHeader || !authHeader.startsWith('Bearer')) {
         return res.status(401).json({ message: 'No token provided or malformed header' });
     }
     
