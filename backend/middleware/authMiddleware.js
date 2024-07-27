@@ -2,11 +2,14 @@ const jwt = require('jsonwebtoken');
 // const User = require('../models/User'); // Adjust the path as necessary
 
 const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    
-    if (!token) return res.status(401).json({ message: 'No token provided' });
-
+    const authToken = req.headers.authorization;
+    console.log(authToken)
+    if (!authToken) {
+      return res
+        .status(401)
+        .json({ success: false, message: "No token, authorization failed" });
+    }
+    const token = authToken.split(" ")[1];
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return res.status(403).json({ message: 'Failed to authenticate token' });
         req.user = user;
