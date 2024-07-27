@@ -23,6 +23,38 @@ const Login = () => {
   };
 
 
+  const loginSubmitHandler = async (e) => {
+    e.preventDefault();
+    // console.log(formData)
+    setLoading(true);
+    const payload = {
+      email: `${formData.email}`,
+      password: `${formData.password}`,
+    };
+    try {
+      let res = await axios.post("http://localhost:3000/api/auth/login", payload);
+      // console.log(res.data.message)
+      setFormData({
+        email: "",
+        password: "",
+      });
+
+      let role = res.data.role;
+      console.log(res, "login data");
+      setLoading(false);
+      toast.success(res.data.message);
+      // console.log(object)
+      // navigate("/home");
+      if (role == 'Admin') {
+        navigate('/adminDashboard')
+      }
+    } catch (error) {
+      setLoading(false);
+      // console.log(error.message)
+      toast.error(error.message);
+    }
+  };
+
     return (
       <div >
         <div className="dash-top max-w-[1070px] mx-auto">
@@ -44,7 +76,7 @@ const Login = () => {
             >
               Welcome Back 👋
             </h3>
-            <form action="" className="py-4 md:py-0">
+            <form action="" className="py-4 md:py-0" onSubmit={(e)=>{loginSubmitHandler(e)}}>
               <div className="mb-2">
                 <input
                   className="form-inp"
