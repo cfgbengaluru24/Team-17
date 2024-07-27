@@ -5,15 +5,12 @@ import Camps from "../../assets/images/Camps.png";
 import Doctors from "../../assets/images/Doctor.png";
 import TotalPatients from "../../assets/images/TotalPatients.png";
 import CuredPatients from "../../assets/images/CuredPatients.png";
+import AdminNavbar from "./AdminNavbar";
 
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow p-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        </div>
-      </header>
+    <AdminNavbar/>
       <main className="max-w-7xl mx-auto p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           <div className="p-4 bg-white rounded-lg shadow">
@@ -94,11 +91,10 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-4 bg-white rounded-lg shadow lg:col-span-2">
             <div className="text-blue-900 mb-4">
-              <h3 className="text-lg font-bold">Website Views</h3>
-              <p className="text-sm text-gray-500">Last Campaign Performance</p>
+              <h3 className="text-lg font-bold">Campaigns Status</h3>
+              <p className="text-sm text-gray-500">Campaign Performances</p>
             </div>
             <img src={BarChart} alt="Graph 1" className="rounded-lg mb-4" />
-            <p className="text-sm text-gray-500">campaign sent 2 days ago</p>
           </div>
           <div
             style={{ height: "fit-content" }}

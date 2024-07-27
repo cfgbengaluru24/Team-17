@@ -8,9 +8,13 @@ const campSchema = new Schema({
     
     beneficiary_id: [{ type: Schema.Types.ObjectId, ref: 'Beneficiary', required: false }],
     doctor_id:[ { type: Schema.Types.ObjectId, ref: 'Doctor', required: false }],
+<<<<<<< HEAD
     date_of_treatment: [{ type: Date, required: false }],    
         
     
+=======
+    date_of_treatment: [{ type: Date, required: false }],
+>>>>>>> 97b6cc9f59428ec5424ef7fb5b71eddef1c95461
     school_email: { 
         type: String, 
         required: true 

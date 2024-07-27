@@ -4,11 +4,11 @@ const CampCards = () => {
   return (
     <div
       style={{ backgroundColor: "white" }}
-      className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      className="max-w-sm bg-white border border-gray-50 rounded-lg shadow dark:border-gray-200"
     >
       <a href="#">
         <img
-          className="rounded-t-lg"
+          className="rounded-t-lg w-full"
           src="https://www.rohinifoundation.org/images/zero_cavity.jpg"
           alt=""
         />
