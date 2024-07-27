@@ -3,8 +3,8 @@ const {authorizeRoles,authenticateToken} = require('../middleware/authMiddleware
 const { createBeneficiary,updateBeneficiary,getBeneficiaryById} =require( '../controller/BeneficiaryController');
 
 const router = express.Router();
-router.post('/create',authenticateToken,authorizeRoles('Doctor') ,createBeneficiary);
-router.put('/update/:id',authenticateToken,authorizeRoles('Doctor') , updateBeneficiary);
-router.get('/:id',authenticateToken,authorizeRoles('Doctor','Admin','School') ,getBeneficiaryById);
+router.post('/create',createBeneficiary);
+router.put('/update/:id', updateBeneficiary);
+router.get('/:id',getBeneficiaryById);
 
 module.exports = router;
