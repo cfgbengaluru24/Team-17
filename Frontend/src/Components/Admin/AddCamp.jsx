@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { addCamp } from "../../services/addCamp"; 
+
 
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
@@ -17,10 +19,20 @@ const AddCampForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission, e.g., send formData to an API
-    console.log("Form Data Submitted:", formData);
+    try {
+      const response = await addCamp(formData);
+      console.log('Form Data Submitted:', response);
+      // Handle success, e.g., display a success message or redirect
+      alert('Camp added successfully!');
+    } catch (error) {
+      console.error('Error submitting form data:', error);
+      // Handle error, e.g., display an error message
+      alert('Error submitting form data. Please try again.');
+    }
+    
+    //console.log("Form Data Submitted:", formData);
     // Reset form after submission
     setFormData({
       campName: "",

@@ -1,5 +1,6 @@
 const AddPatient = () => {
-  return <></>;
+  return <>
+  </>;
 };
 
 export default AddPatient;
