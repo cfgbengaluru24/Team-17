@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import addPatient from "../../services/addPatient";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
@@ -32,32 +34,17 @@ const AddCampForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData)
     try {
-      const addCampReturn = await addPatient({
+      const response = await axios.post(
+        "http://localhost:3000/api/beneficiary/create",
         formData,
-      });
-      console.log("Form Data Submitted:", formData);
-      setFormData({
-        name: "",
-        phonenumber: "",
-        age: "",
-        allergic_information: "",
-        medico: "",
-        images: "",
-        tooth_number: "",
-        tooth_condition: "",
-        periodontal_probing_depths: "",
-        bleeding_on_probing: false,
-        plaque_index: "",
-        calculus_index: "",
-        gingival_index: "",
-        oral_cancer_screening_result: "",
-        prescription: "",
-        isAnemic: false,
-        level: "",
-      });
+      );
+      console.log(response.data.message);
+      toast.success(response.data.message);
     } catch (error) {
-      console.error("Adding Patient failed", error);
+      console.error("Error submitting form data:", error);
+      toast.error(error.message);
     }
   };
 
@@ -77,7 +64,7 @@ const AddCampForm = () => {
         >
           Add New Beneficiary
         </h1>
-        <form onSubmit={handleSubmit} className="flex flex-wrap -mx-4">
+        <form onSubmit={(e) => handleSubmit(e)} className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4 mb-6">
             <label
               htmlFor="name"

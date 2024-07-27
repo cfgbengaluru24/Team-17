@@ -5,6 +5,8 @@ import CampCards from "./CampCards";
 import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 const UpcomingCards = ({ camps }) => {
   const upcomingCamps =
@@ -94,6 +96,9 @@ const CampHome = () => {
 
   }
 
+  const navigate = useNavigate();
+
+
   return (
     <div
       style={{ backgroundColor: "white" }}
@@ -104,7 +109,7 @@ const CampHome = () => {
       <main className="p-4">
         <div className="create-top flex items-center justify-between container mx-auto">
           <h1 className=" font-bold text-[25px]">Your Camps</h1>
-          <button className="btn">Create</button>
+          <button className="btn" onClick={()=>{navigate('/addCamps')}}>Create</button>
         </div>
         <div className="container mx-auto flex justify-center">
           <div className="grid grid-cols-3 gap-4">
