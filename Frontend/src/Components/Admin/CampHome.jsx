@@ -4,9 +4,9 @@ import CampCards from "./CampCards";
 import AdminNavbar from "./AdminNavbar";
 import getCamps from "../../services/getCamps";
 
-const UpcomingCards = ({ camps }) => {
-  const upcomingCamps =
-    camps?.filter((camp) => camp.status === "not yet started") || [];
+const UpcomingCards = () => {
+  // const upcomingCamps =
+  //   camps?.filter((camp) => camp.status === "not yet started") || [];
 
   return (
     <div>
@@ -17,9 +17,9 @@ const UpcomingCards = ({ camps }) => {
         Upcoming
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        {upcomingCamps.map((camp) => (
+        {/* {upcomingCamps.map((camp) => (
           <CampCards key={camp.id} camp={camp} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
@@ -37,9 +37,9 @@ const LiveCards = ({ camps }) => {
         Live
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        {liveCamps.map((camp) => (
+        {/* {liveCamps.map((camp) => (
           <CampCards key={camp.id} camp={camp} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
@@ -58,9 +58,9 @@ const CompletedCards = ({ camps }) => {
         Completed
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        {completedCamps.map((camp) => (
+        {/* {completedCamps.map((camp) => (
           <CampCards key={camp.id} camp={camp} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

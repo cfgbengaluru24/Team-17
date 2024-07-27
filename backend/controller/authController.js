@@ -85,13 +85,10 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-      console.log(req.body)
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "User not found" });
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch)
-      return res.status(400).json({ message: "Invalid email or password" });
+        const user = await User.findOne({ email});
+        if (!user) return res.status(404).json({ message: 'User not found' });
+        const isMatch = await bcrypt.comparePassword(password);
+        if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
 
     const token = jwt.sign(
       { id: user._id, role: user.role },
@@ -101,16 +98,15 @@ const login = async (req, res) => {
 
     // res.cookie('token', token, { httpOnly: true }).json({ message: 'Logged in successfully' });
 
-    res.status(200).json({
-      status: true,
-      message: "Successfully logged in",
-      token,
-      role: user.role,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Error logging in", error });
-  }
+        res.status(200).json({
+          status: true,
+          message: "Successfully logged in",
+          token:token,
+          role:user.role,
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error logging in', error });
+    }
 };
 
 const adminRoute = async (req, res) => {
