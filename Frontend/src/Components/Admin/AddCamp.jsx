@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import axios from "axios";
 import { BASE_URL, token } from "../../../config";
+import { toast } from "react-toastify";
 
 
 const AddCampForm = () => {
@@ -30,9 +31,11 @@ const AddCampForm = () => {
                 Headers:{Authorization:`Bearer ${token}`}
             }
       );
-      console.log( response);
+      console.log(response.data.message);
+      toast.success(response.data.message);
     } catch (error) {
       console.error('Error submitting form data:', error);
+      toast.error(error.message);
     }
 
     //console.log("Form Data Submitted:", formData);
