@@ -63,12 +63,19 @@ const AddCampForm = () => {
         }}
       ></div>
       <div className="relative w-full max-w-6xl bg-white p-8 shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8" style={{ textAlign: "center", color: "#0067FF" }}>
+        <h1
+          className="text-3xl font-bold text-gray-800 mb-8"
+          style={{ textAlign: "center", color: "#0067FF" }}
+        >
           Add New Beneficiary
         </h1>
         <form onSubmit={handleSubmit} className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Name
             </label>
             <input
@@ -82,7 +89,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="phonenumber"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Phone Number
             </label>
             <input
@@ -96,7 +107,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="age"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Age
             </label>
             <input
@@ -110,7 +125,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="allergic_information" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="allergic_information"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Allergic Information
             </label>
             <input
@@ -124,7 +143,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="medico" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="medico"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Medico
             </label>
             <input
@@ -138,7 +161,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="images" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="images"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Images
             </label>
             <input
@@ -152,7 +179,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="tooth_number" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="tooth_number"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Tooth Number
             </label>
             <input
@@ -166,7 +197,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="tooth_condition" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="tooth_condition"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Tooth Condition
             </label>
             <input
@@ -180,7 +215,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="periodontal_probing_depths" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="periodontal_probing_depths"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Periodontal Probing Depths
             </label>
             <input
@@ -194,7 +233,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="bleeding_on_probing" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="bleeding_on_probing"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Bleeding on Probing
             </label>
             <input
@@ -207,7 +250,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="plaque_index" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="plaque_index"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Plaque Index
             </label>
             <input
@@ -221,7 +268,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="calculus_index" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="calculus_index"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Calculus Index
             </label>
             <input
@@ -235,7 +286,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="gingival_index" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="gingival_index"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Gingival Index
             </label>
             <input
@@ -249,7 +304,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full px-4 mb-6">
-            <label htmlFor="oral_cancer_screening_result" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="oral_cancer_screening_result"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Oral Cancer Screening Result
             </label>
             <input
@@ -263,7 +322,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full px-4 mb-6">
-            <label htmlFor="prescription" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="prescription"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Prescription
             </label>
             <textarea
@@ -277,7 +340,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="isAnemic" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="isAnemic"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Is Anemic
             </label>
             <input
@@ -290,7 +357,11 @@ const AddCampForm = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
-            <label htmlFor="level" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontSize: "20px" }}>
+            <label
+              htmlFor="level"
+              className="block text-sm font-medium text-gray-700 mb-2"
+              style={{ fontSize: "20px" }}
+            >
               Level
             </label>
             <input
@@ -303,11 +374,19 @@ const AddCampForm = () => {
               className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div className="w-full px-4" style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            className="w-full px-4"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
             <button
               type="submit"
               className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              style={{ backgroundColor: "#fe725e", height: "60px", width: "fit-content", padding: "15px" }}
+              style={{
+                backgroundColor: "#fe725e",
+                height: "60px",
+                width: "fit-content",
+                padding: "15px",
+              }}
             >
               Add Beneficiary
             </button>
