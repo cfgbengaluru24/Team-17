@@ -32,11 +32,13 @@ const AddCampForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting form data:", formData); // Log form data
     try {
       const addCampReturn = await addPatient({
         formData,
       });
       console.log("Form Data Submitted:", formData);
+      console.log("Server Response:", addCampReturn); // Log server response
       setFormData({
         name: "",
         phonenumber: "",
@@ -77,6 +79,35 @@ const AddCampForm = () => {
         >
           Add New Beneficiary
         </h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingBottom: "20px",
+          }}
+        >
+          <button
+            style={{
+              backgroundColor: "#fe725e",
+              border: "none",
+              color: "white",
+              padding: "15px 10px",
+              textAlign: "center",
+              textDecoration: "none",
+              fontSize: "16px",
+              margin: "4px 2px",
+              cursor: "pointer",
+              borderRadius: "8px",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#45a049")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#fe725e")}
+          >
+            Use Doctor's Voice
+          </button>
+        </div>
+
         <form onSubmit={handleSubmit} className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4 mb-6">
             <label

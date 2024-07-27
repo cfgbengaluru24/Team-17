@@ -33,6 +33,14 @@ exports.createBeneficiary = async (req, res) => {
             level
         } = req.body;
 
+        if (!name || !phonenumber || !age || !allergic_information || !medico || 
+            !tooth_number || !tooth_condition || periodontal_probing_depths === undefined || 
+            bleeding_on_probing === undefined || !plaque_index || !calculus_index || 
+            !gingival_index || !oral_cancer_screening_result || !prescription || 
+            isAnemic === undefined || level === undefined) {
+            return res.status(400).json({ message: 'All required fields must be provided' });
+        }
+
         // Create a new beneficiary
         const newBeneficiary = new Beneficiary({
             name,

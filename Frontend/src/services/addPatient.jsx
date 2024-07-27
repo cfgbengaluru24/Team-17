@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = "/api/addPatient";
+const baseURL = "http://localhost:3000/api/beneficiary/create";
 
 const addPatient = async (patientDetails) => {
   const response = await axios.post(baseURL, patientDetails);
