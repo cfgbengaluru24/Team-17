@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { addCamp } from "../../services/addCamp"; 
-
+import { addCamp } from "../../services/addCamp";
 
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
@@ -23,24 +22,24 @@ const AddCampForm = () => {
     e.preventDefault();
     try {
       const response = await addCamp(formData);
-      console.log('Form Data Submitted:', response);
+      console.log("Form Data Submitted:", response);
       // Handle success, e.g., display a success message or redirect
-      alert('Camp added successfully!');
+      console.log("Camp added successfully!");
+      setFormData({
+        campName: "",
+        totalPeople: "",
+        date: "",
+        schoolEmail: "",
+        status: "",
+      });
     } catch (error) {
-      console.error('Error submitting form data:', error);
+      console.error("Error submitting form data:", error);
       // Handle error, e.g., display an error message
-      alert('Error submitting form data. Please try again.');
+      alert("Error submitting form data. Please try again.");
     }
-    
+
     //console.log("Form Data Submitted:", formData);
     // Reset form after submission
-    setFormData({
-      campName: "",
-      totalPeople: "",
-      date: "",
-      schoolEmail: "",
-      status: "",
-    });
   };
 
   return (
@@ -130,7 +129,7 @@ const AddCampForm = () => {
             <input
               type="email"
               id="email"
-              name="email"
+              name="schoolEmail"
               value={formData.schoolEmail}
               onChange={handleChange}
               required
