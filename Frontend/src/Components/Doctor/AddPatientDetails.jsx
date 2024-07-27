@@ -34,11 +34,11 @@ const AddCampForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
     try {
       const response = await axios.post(
         "http://localhost:3000/api/beneficiary/create",
-        formData,
+        formData
       );
       console.log(response.data.message);
       toast.success(response.data.message);
@@ -64,6 +64,7 @@ const AddCampForm = () => {
         >
           Add New Beneficiary
         </h1>
+<<<<<<< HEAD
         <form onSubmit={(e) => handleSubmit(e)} className="flex flex-wrap -mx-4">
         <div
           style={{
@@ -72,28 +73,48 @@ const AddCampForm = () => {
             alignItems: "center",
             paddingBottom: "20px",
           }}
+=======
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="flex flex-wrap -mx-4"
+>>>>>>> 2386a255110c63a2747442a97b98776c34dc57b5
         >
-          <button
+          <div
             style={{
-              backgroundColor: "#fe725e",
-              border: "none",
-              color: "white",
-              padding: "15px 10px",
-              textAlign: "center",
-              textDecoration: "none",
-              fontSize: "16px",
-              margin: "4px 2px",
-              cursor: "pointer",
-              borderRadius: "8px",
-              transition: "background-color 0.3s",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: "20px",
             }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = "#45a049")}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = "#fe725e")}
           >
+<<<<<<< HEAD
             Use Doctor's Voice
           </button>
           </div>
           </form>
+=======
+            <button
+              style={{
+                backgroundColor: "#fe725e",
+                border: "none",
+                color: "white",
+                padding: "15px 10px",
+                textAlign: "center",
+                textDecoration: "none",
+                fontSize: "16px",
+                margin: "4px 2px",
+                cursor: "pointer",
+                borderRadius: "8px",
+                transition: "background-color 0.3s",
+              }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#45a049")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#fe725e")}
+            >
+              Use Doctor's Voice
+            </button>
+          </div>
+        </form>
+>>>>>>> 2386a255110c63a2747442a97b98776c34dc57b5
 
         <form onSubmit={handleSubmit} className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4 mb-6">

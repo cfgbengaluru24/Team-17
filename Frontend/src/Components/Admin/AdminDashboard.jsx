@@ -1,13 +1,24 @@
-// src/components/Dashboard.jsx
 import React from "react";
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import AdminNavbar from "./AdminNavbar";
 import Camps from "../../assets/images/Camps.png";
 import Doctors from "../../assets/images/Doctor.png";
 import TotalPatients from "../../assets/images/TotalPatients.png";
 import CuredPatients from "../../assets/images/CuredPatients.png";
-import AdminNavbar from "./AdminNavbar";
 
 const Dashboard = () => {
-  // Sample data
+  // Defined dataset for statistics
   const data = [
     {
       title: "Camps",
@@ -26,7 +37,7 @@ const Dashboard = () => {
       bgColor: "bg-blue-200",
     },
     {
-      title: "Total beneficiaries",
+      title: "Total Beneficiaries",
       icon: TotalPatients,
       value: 4500,
       change: "+8% than last month",
@@ -43,6 +54,29 @@ const Dashboard = () => {
     },
   ];
 
+  // Sample data for graphs
+  const curedPatientData = [
+    { month: "July", cured: 80, notCured: 20 },
+    { month: "August", cured: 90, notCured: 30 },
+    { month: "September", cured: 85, notCured: 25 },
+    { month: "October", cured: 95, notCured: 15 },
+    { month: "November", cured: 100, notCured: 10 },
+    { month: "December", cured: 110, notCured: 5 },
+    { month: "January", cured: 120, notCured: 10 },
+    { month: "February", cured: 130, notCured: 15 },
+  ];
+
+  const campMonthData = [
+    { month: "July", camps: 5 },
+    { month: "August", camps: 6 },
+    { month: "September", camps: 7 },
+    { month: "October", camps: 4 },
+    { month: "November", camps: 8 },
+    { month: "December", camps: 9 },
+    { month: "January", camps: 6 },
+    { month: "February", camps: 5 },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100">
       <AdminNavbar />
@@ -54,7 +88,7 @@ const Dashboard = () => {
               <div className="flex items-center">
                 <div className={`p-3 rounded-full ${item.bgColor}`}>
                   <img
-                    style={{ height: "30px", width: "" }}
+                    style={{ height: "30px", width: "30px" }}
                     src={item.icon}
                     alt={item.title}
                   />
@@ -83,10 +117,17 @@ const Dashboard = () => {
                 Cured and not-cured patients
               </p>
             </div>
-            {/* Place for the first graph */}
-            <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-500">[Graph 1]</p>
-            </div>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={curedPatientData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="cured" fill="#8884d8" />
+                <Bar dataKey="notCured" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
           <div
             style={{ height: "fit-content" }}
@@ -94,31 +135,21 @@ const Dashboard = () => {
           >
             <div className="text-blue-900 mb-4">
               <h3 className="text-lg font-bold">
-                Number of camps held by month
+                Number of Camps Held by Month
               </h3>
               <p className="text-sm text-gray-500">Number of camps</p>
             </div>
-            {/* Place for the first graph */}
-            <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-500">[Graph 1]</p>
-            </div>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={campMonthData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="camps" stroke="#8884d8" />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
-          {/* <div
-            style={{ height: "fit-content" }}
-            className="p-4 bg-white rounded-lg shadow"
-          >
-            <div className="text-green-900 mb-4">
-              <h3 className="text-lg font-bold"></h3>
-              <p className="text-sm text-gray-500">
-                (+15%) increase in today sales
-              </p>
-            </div>
-            {/* Place for the second graph */}
-          {/* <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-500">[Graph 2]</p>
-            </div>
-            <p className="text-sm text-gray-500 mt-4">updated 4 min ago</p>
-          </div>} */}
         </div>
       </main>
     </div>
