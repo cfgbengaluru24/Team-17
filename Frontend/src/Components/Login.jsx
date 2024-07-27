@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 import './CSS/Login.css'
+import logo from "../assets/images/rohini_logo.jpeg";
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,60 +23,69 @@ const Login = () => {
   };
 
 
-  return (
-    <section>
-      <div className="w-full max-w-[570px] mx-auto rounded-lg shadow-md p-10">
-        <h3
-          className="text-primaryColor font-bold text-[24px]
-        leading-10 mb-4"
-        >
-          Welcome Back 👋
-        </h3>
-        <form
-          action=""
-          className="py-4 md:py-0"
-          
-        >
-          <div className="mb-2">
-            <input
-              className="form-inp"
-              type="email"
-              placeholder="Enter your email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              className="form-inp"
-              type="password"
-              placeholder="Enter your password"
-              name="password"
-              autoComplete="false"
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          <button disabled={loading} className="btn w-full" type="submit">
-            {loading ? <HashLoader size={35} color="#fff" /> : "Login"}
+    return (
+      <div >
+        <div className="dash-top max-w-[1070px] mx-auto">
+          <img onClick={() => navigate("/")} src={logo} alt="" />
+          <button
+            className="btn mt-0"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Home
           </button>
-          <p className="mt-5 text-center text-textColor">
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="text-primaryColor hover:underline font-medium"
+        </div>
+        <section>
+          <div className="w-full max-w-[570px] mx-auto rounded-lg shadow-md p-10">
+            <h3
+              className="text-primaryColor font-bold text-[24px]
+        leading-10 mb-4"
             >
-              Sign up
-            </Link>
-          </p>
-        </form>
+              Welcome Back 👋
+            </h3>
+            <form action="" className="py-4 md:py-0">
+              <div className="mb-2">
+                <input
+                  className="form-inp"
+                  type="email"
+                  placeholder="Enter your email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="mb-2">
+                <input
+                  className="form-inp"
+                  type="password"
+                  placeholder="Enter your password"
+                  name="password"
+                  autoComplete="false"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <button disabled={loading} className="btn w-full" type="submit">
+                {loading ? <HashLoader size={35} color="#fff" /> : "Login"}
+              </button>
+              <p className="mt-5 text-center text-textColor">
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  className="text-primaryColor hover:underline font-medium"
+                >
+                  Sign up
+                </Link>
+              </p>
+            </form>
+          </div>
+        </section>
       </div>
-    </section>
-  );
+    );
 };
 
 export default Login;
