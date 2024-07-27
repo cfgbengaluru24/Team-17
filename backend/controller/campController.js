@@ -10,6 +10,10 @@ exports.createCamp = async (req, res) => {
     try {
         const { camp_name, total_number_of_people, school_email, status } = req.body;
 
+        if (req.user.role !== 'Admin') {
+            return res.status(403).json({ message: 'Only admins can create camps' });
+        }
+
         // Create the camp
         const newCamp = new Camp({
             camp_name,
@@ -49,6 +53,7 @@ exports.createCamp = async (req, res) => {
 exports.getCampById = async (req, res) => {
     try {
         const { id } = req.params;
+        
 
         // Find the camp
         const camp = await Camp.findById(id)
@@ -72,4 +77,24 @@ exports.getAllCamps = async (req, res) => {
         console.log(error);
         res.status(500).json({ message: 'Server error', error });
     }
-}
+};
+
+exports.getBeneficiariesByCampId = async (req, res) => {
+    try {
+
+        const { campId } = req.params;
+
+        // Find the camp by ID and populate the beneficiaries
+        const camp = await Camp.findById(campId)
+            .populate('beneficiary_id'); // Ensure this matches the field in your Camp schema
+
+        if (!camp) return res.status(404).json({ message: 'Camp not found' });
+
+        // Beneficiaries associated with the camp
+        const beneficiaries = camp.beneficiary_id;
+
+        res.status(200).json({ beneficiaries });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+};
