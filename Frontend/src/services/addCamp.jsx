@@ -1,5 +1,5 @@
 // services/addCamp.js
-import axios from 'axios';
+import axios from "axios";
 
 
 export const addCamp = async (campData) => {
@@ -10,7 +10,7 @@ export const addCamp = async (campData) => {
     );
     return response.data;
   } catch (error) {
-    console.error('Error adding camp:', error);
-    throw error; 
+    console.error("Error adding camp:", error);
+    throw error;
   }
 };
