@@ -7,6 +7,7 @@ import SignUp from "./Components/SignUp";
 import AddPatientDetails from "./Components/Doctor/AddPatientDetails";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
 import { Routes, Route } from "react-router-dom";
+import CampInfo from "./Components/Admin/CampInfo";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Route path="/addCamps" element={<AddCamp />} />
       <Route path="/adminDashboard" element={<AdminDashboard />} />
       <Route path="/addPatient" element={<AddPatientDetails />} />
+      <Route path="/campInfo" element={<CampInfo />} />
     </Routes>
   );
 };
