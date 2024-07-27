@@ -23,8 +23,8 @@ const AddCampForm = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    console.log(formData)
-    console.log(token)
+    // console.log(formData)
+    // console.log(token)
     try {
       const response = await axios.post(
         "http://localhost:3000/api/camp/create",formData,{

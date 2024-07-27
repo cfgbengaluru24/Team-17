@@ -3,6 +3,7 @@ const express = require('express');
 const { createBeneficiary,updateBeneficiary,getBeneficiaryById} =require( '../controller/BeneficiaryController');
 
 const router = express.Router();
+
 router.post('/create',createBeneficiary);
 router.put('/update/:id', updateBeneficiary);
 router.get('/:id',getBeneficiaryById);

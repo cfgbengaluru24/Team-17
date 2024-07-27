@@ -1,6 +1,5 @@
-import React from "react";
 
-const CampCards = () => {
+const CampCards = ({camp}) => {
   return (
     <div
       style={{ backgroundColor: "white" }}
