@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import addPatient from "../../services/addPatient";
 
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
@@ -29,28 +30,35 @@ const AddCampForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    setFormData({
-      name: "",
-      phonenumber: "",
-      age: "",
-      allergic_information: "",
-      medico: "",
-      images: "",
-      tooth_number: "",
-      tooth_condition: "",
-      periodontal_probing_depths: "",
-      bleeding_on_probing: false,
-      plaque_index: "",
-      calculus_index: "",
-      gingival_index: "",
-      oral_cancer_screening_result: "",
-      prescription: "",
-      isAnemic: false,
-      level: "",
-    });
+    try {
+      const addCampReturn = await addPatient({
+        formData,
+      });
+      console.log("Form Data Submitted:", formData);
+      setFormData({
+        name: "",
+        phonenumber: "",
+        age: "",
+        allergic_information: "",
+        medico: "",
+        images: "",
+        tooth_number: "",
+        tooth_condition: "",
+        periodontal_probing_depths: "",
+        bleeding_on_probing: false,
+        plaque_index: "",
+        calculus_index: "",
+        gingival_index: "",
+        oral_cancer_screening_result: "",
+        prescription: "",
+        isAnemic: false,
+        level: "",
+      });
+    } catch (error) {
+      console.error("Adding Patient failed", error);
+    }
   };
 
   return (
