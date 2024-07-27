@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { addCamp } from "../../services/addCamp"; 
+import  { useState } from "react";
+import axios from "axios";
 
 
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
-    campName: "",
-    totalPeople: "",
-    date: "",
-    schoolEmail: "",
+    camp_name: "",
+    total_number_of_people: "",
+    school_email: "",
     status: "",
   });
 
@@ -22,23 +21,20 @@ const AddCampForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await addCamp(formData);
-      console.log('Form Data Submitted:', response);
-      // Handle success, e.g., display a success message or redirect
-      alert('Camp added successfully!');
+      const response = await axios.post(
+        "http://localhost:3000/api/beneficiary/create",formData
+      );
+      console.log( response);
     } catch (error) {
       console.error('Error submitting form data:', error);
-      // Handle error, e.g., display an error message
-      alert('Error submitting form data. Please try again.');
     }
     
     //console.log("Form Data Submitted:", formData);
     // Reset form after submission
     setFormData({
-      campName: "",
-      totalPeople: "",
-      date: "",
-      schoolEmail: "",
+      camp_name: "",
+      total_number_of_people: "",
+      school_email: "",
       status: "",
     });
   };
@@ -93,8 +89,8 @@ const AddCampForm = () => {
             <input
               type="String"
               id="total"
-              name="totalPeople"
-              value={formData.totalPeople}
+              name="total_number_of_people"
+              value={formData.total_number_of_people}
               onChange={handleChange}
               required
               style={{ fontSize: "20px" }}
@@ -131,7 +127,7 @@ const AddCampForm = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.schoolEmail}
+              value={formData.school_email}
               onChange={handleChange}
               required
               className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
