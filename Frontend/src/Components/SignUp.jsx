@@ -5,9 +5,10 @@ import signupImg from "../assets/images/signup.gif";
 import avatar from '../assets/images/avatar-icon.png'
 import logo from "../assets/images/rohini_logo.jpeg";
 
-
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import axios from "axios";
+
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -18,15 +19,42 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    photo: null,
-    role: "patient",
-    gender: "",
+    role: "admin",
   });
   const handleInputChange = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+    
+    const signupSubmitHandler = async (e) => {
+      e.preventDefault();
+      // console.log(formData)
+      setLoading(true);
+      const payload = {
+        name: `${formData.name}`,
+        email: `${formData.email}`,
+        password: `${formData.password}`,
+        role: `${formData.role}`,
+      };
+      try {
+        let res = await axios.post("", payload);
+        // console.log(res.data.message)
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          role: "admin",
+        });
+        setLoading(false);
+        toast.success(res.data.message);
+        navigate("/login");
+      } catch (error) {
+        setLoading(false);
+        // console.log(error.message)
+        toast.error(error.message);
+      }
+    };
 
     return (
       <div>
@@ -60,7 +88,7 @@ const SignUp = () => {
                   <span className="text-primaryColor font-bold">Account</span>
                 </h3>
 
-                <form action="" method="POST" className="py-4 md:py-0">
+                <form action="" method="POST" className="py-4 md:py-0" onSubmit={(e)=>{signupSubmitHandler}}>
                   <div className="mb-2">
                     <input
                       className="form-inp"
@@ -117,26 +145,6 @@ const SignUp = () => {
                       </select>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="gender"
-                        className="text-headingColor font-bold leading-7"
-                      >
-                        Gender:
-                      </label>
-                      <select
-                        name="gender"
-                        id="gender"
-                        value={formData.gender}
-                        onChange={(e) => handleInputChange(e)}
-                        className="text-textColor font-semibold leading-3 p-4 focus:outline-none"
-                      >
-                        <option value="">Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
                   </div>
 
                   <button
