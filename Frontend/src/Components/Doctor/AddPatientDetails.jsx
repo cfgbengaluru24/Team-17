@@ -34,43 +34,14 @@ const AddCampForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
     console.log(formData)
-=======
-    console.log("Submitting form data:", formData); // Log form data
->>>>>>> 8c27217489d1b0e74575c8353bb089925b8d41dd
     try {
       const response = await axios.post(
         "http://localhost:3000/api/beneficiary/create",
         formData,
-<<<<<<< HEAD
       );
       console.log(response.data.message);
       toast.success(response.data.message);
-=======
-      });
-      console.log("Form Data Submitted:", formData);
-      console.log("Server Response:", addCampReturn); // Log server response
-      setFormData({
-        name: "",
-        phonenumber: "",
-        age: "",
-        allergic_information: "",
-        medico: "",
-        images: "",
-        tooth_number: "",
-        tooth_condition: "",
-        periodontal_probing_depths: "",
-        bleeding_on_probing: false,
-        plaque_index: "",
-        calculus_index: "",
-        gingival_index: "",
-        oral_cancer_screening_result: "",
-        prescription: "",
-        isAnemic: false,
-        level: "",
-      });
->>>>>>> 8c27217489d1b0e74575c8353bb089925b8d41dd
     } catch (error) {
       console.error("Error submitting form data:", error);
       toast.error(error.message);
@@ -93,9 +64,7 @@ const AddCampForm = () => {
         >
           Add New Beneficiary
         </h1>
-<<<<<<< HEAD
         <form onSubmit={(e) => handleSubmit(e)} className="flex flex-wrap -mx-4">
-=======
         <div
           style={{
             display: "flex",
@@ -123,10 +92,10 @@ const AddCampForm = () => {
           >
             Use Doctor's Voice
           </button>
-        </div>
+          </div>
+          </form>
 
         <form onSubmit={handleSubmit} className="flex flex-wrap -mx-4">
->>>>>>> 8c27217489d1b0e74575c8353bb089925b8d41dd
           <div className="w-full md:w-1/2 px-4 mb-6">
             <label
               htmlFor="name"
