@@ -11,6 +11,7 @@ const School=require('../models/School');
 const register = async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
+        console.log(name,email,password,role)
 
         // Check if user already exists
         let existingUser = await User.findOne({ email });
@@ -27,6 +28,7 @@ const register = async (req, res) => {
             password: hashedPassword,
             role
         });
+        console.log(newUser)
 
         // Create corresponding document based on role
         let relatedDocument;
@@ -53,13 +55,9 @@ const register = async (req, res) => {
         // Generate JWT token
         const token = jwt.sign({ id: newUser._id, role: newUser.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.cookie('token', token, {
-            httpOnly: true, // Cookie is only accessible by the server
-            secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS
-            maxAge: 3600000 // 1 hour
-        });
-
-        res.status(201).json({ message: 'User registered successfully' });
+        res
+          .status(201)
+          .json({ success: true, message: "User registered successfully" });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: error.message });
@@ -78,7 +76,14 @@ const login = async (req, res) => {
 
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.cookie('token', token, { httpOnly: true }).json({ message: 'Logged in successfully' });
+        // res.cookie('token', token, { httpOnly: true }).json({ message: 'Logged in successfully' });
+
+        res.status(200).json({
+          status: true,
+          message: "Successfully logged in",
+          token,
+          role:user.role,
+        });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in', error });
     }
