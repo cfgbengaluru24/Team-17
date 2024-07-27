@@ -11,7 +11,6 @@ exports.createCamp = async (req, res) => {
     const { camp_name, total_number_of_people, school_email, status } =
       req.body;
 
-<<<<<<< HEAD
         if (req.user.role !== 'Admin') {
             return res.status(403).json({ message: 'Only admins can create camps' });
         }
@@ -26,18 +25,6 @@ exports.createCamp = async (req, res) => {
             status,
             date_of_camp: new Date()
         });
-=======
-    // Create the camp
-    const newCamp = new Camp({
-      camp_name,
-      total_number_of_people,
-      beneficiary_id: [],
-      doctor_id: [],
-      school_email,
-      status,
-      date_of_camp: new Date(),
-    });
->>>>>>> 97b6cc9f59428ec5424ef7fb5b71eddef1c95461
 
     // Save the camp
     await newCamp.save();
