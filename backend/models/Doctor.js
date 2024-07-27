@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const doctorSchema = new Schema({
     name: { type: String, required: true },
-    phone_number: { type: String, required: true },
-    experience: { type: Number, required: true },
-    specialization: { type: String, required: true },
+    phone_number: { type: String, required: false },
+    experience: { type: Number, required: false },
+    specialization: { type: String, required: false },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true }
 }, { timestamps: true });

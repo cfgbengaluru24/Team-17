@@ -19,7 +19,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    role: "admin",
+    role: "Admin",
   });
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const SignUp = () => {
     
     const signupSubmitHandler = async (e) => {
       e.preventDefault();
-      // console.log(formData)
+      console.log(formData)
       setLoading(true);
       const payload = {
         name: `${formData.name}`,
@@ -38,13 +38,16 @@ const SignUp = () => {
         role: `${formData.role}`,
       };
       try {
-        let res = await axios.post("", payload);
+        let res = await axios.post(
+          "http://localhost:3000/api/auth/register",
+          payload
+        );
         // console.log(res.data.message)
         setFormData({
           name: "",
           email: "",
           password: "",
-          role: "admin",
+          role: "Admin",
         });
         setLoading(false);
         toast.success(res.data.message);
@@ -88,7 +91,14 @@ const SignUp = () => {
                   <span className="text-primaryColor font-bold">Account</span>
                 </h3>
 
-                <form action="" method="POST" className="py-4 md:py-0" onSubmit={(e)=>{signupSubmitHandler}}>
+                <form
+                  action=""
+                  method="POST"
+                  className="py-4 md:py-0"
+                  onSubmit={(e) => {
+                    signupSubmitHandler(e);
+                  }}
+                >
                   <div className="mb-2">
                     <input
                       className="form-inp"
@@ -139,12 +149,11 @@ const SignUp = () => {
                         onChange={(e) => handleInputChange(e)}
                         className="text-textColor font-semibold leading-3 p-4 focus:outline-none"
                       >
-                        <option value="admin">Admin</option>
-                        <option value="doctor">Doctor</option>
-                        <option value="beneficiary">Beneficiary</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="School">Beneficiary</option>
                       </select>
                     </div>
-
                   </div>
 
                   <button
