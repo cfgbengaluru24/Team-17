@@ -3,11 +3,10 @@ import React, { useState } from "react";
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
     campName: "",
-    location: "",
+    totalPeople: "",
     date: "",
-    description: "",
-    contactPerson: "",
-    contactNumber: "",
+    schoolEmail: "",
+    status: "",
   });
 
   const handleChange = (e) => {
@@ -25,11 +24,10 @@ const AddCampForm = () => {
     // Reset form after submission
     setFormData({
       campName: "",
-      location: "",
+      totalPeople: "",
       date: "",
-      description: "",
-      contactPerson: "",
-      contactNumber: "",
+      schoolEmail: "",
+      status: "",
     });
   };
 
@@ -74,17 +72,17 @@ const AddCampForm = () => {
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
             <label
-              htmlFor="location"
+              htmlFor="total"
               style={{ fontSize: "20px" }}
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Location
+              Total People
             </label>
             <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
+              type="String"
+              id="total"
+              name="totalPeople"
+              value={formData.totalPeople}
               onChange={handleChange}
               required
               style={{ fontSize: "20px" }}
@@ -111,17 +109,17 @@ const AddCampForm = () => {
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
             <label
-              htmlFor="contactPerson"
+              htmlFor="email"
               style={{ fontSize: "20px" }}
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Contact Person
+              School Email
             </label>
             <input
-              type="text"
-              id="contactPerson"
-              name="contactPerson"
-              value={formData.contactPerson}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.schoolEmail}
               onChange={handleChange}
               required
               className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -129,37 +127,19 @@ const AddCampForm = () => {
           </div>
           <div className="w-full md:w-1/2 px-4 mb-6">
             <label
-              htmlFor="contactNumber"
+              htmlFor="status"
               style={{ fontSize: "20px" }}
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Contact Number
+              Status
             </label>
             <input
-              type="tel"
-              id="contactNumber"
-              name="contactNumber"
-              value={formData.contactNumber}
+              type="text"
+              id="status"
+              name="status"
+              value={formData.status}
               onChange={handleChange}
               required
-              className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="w-full px-4 mb-6">
-            <label
-              htmlFor="description"
-              style={{ fontSize: "20px" }}
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Description
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-              rows="4"
               className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
