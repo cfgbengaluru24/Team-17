@@ -7,10 +7,10 @@ const User = require('../models/User');
 exports.createBeneficiary = async (req, res) => {
     try {
         // Check if the user is a doctor
-        const user = req.user; // Get user information from req.user
-        if (!user || user.role !== 'Doctor') {
-            return res.status(403).json({ message: 'Only doctors can create beneficiaries' });
-        }
+        // const user = req.user; // Get user information from req.user
+        // if (!user || user.role !== 'Doctor') {
+        //     return res.status(403).json({ message: 'Only doctors can create beneficiaries' });
+        // }
 
 
         const {
@@ -66,10 +66,10 @@ exports.createBeneficiary = async (req, res) => {
 exports.updateBeneficiary = async (req, res) => {
     try {
        
-        const user = req.user; // Get user information from req.user
-        if (!user || user.role !== 'Doctor') {
-            return res.status(403).json({ message: 'Only doctors can create beneficiaries' });
-        }
+        // const user = req.user; // Get user information from req.user
+        // if (!user || user.role !== 'Doctor') {
+        //     return res.status(403).json({ message: 'Only doctors can create beneficiaries' });
+        // }
 
         const { id } = req.params;
         const updateData = req.body;
@@ -86,10 +86,10 @@ exports.updateBeneficiary = async (req, res) => {
 
 exports.getBeneficiaryById = async (req, res) => {
     try {
-        const user = req.user; // Get user information from req.user
-        if (!user || user.role !== 'Doctor'|| user.role !==school) {
-            return res.status(403).json({ message: 'Only doctors can create beneficiaries' });
-        }
+        // const user = req.user; // Get user information from req.user
+        // if (!user || user.role !== 'Doctor'|| user.role !==school) {
+        //     return res.status(403).json({ message: 'Only doctors can create beneficiaries' });
+        // }
         const { id } = req.params;
 
         // Find the beneficiary

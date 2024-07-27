@@ -43,9 +43,7 @@ exports.createCamp = async (req, res) => {
       await admin.save();
     }
 
-    res
-      .status(201)
-      .json({ message: "Camp created successfully", camp: newCamp });
+    res.status(201).json({ message: "Camp created successfully", camp: newCamp });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
