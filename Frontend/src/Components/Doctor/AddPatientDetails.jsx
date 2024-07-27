@@ -3,7 +3,6 @@ import addPatient from "../../services/addPatient";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-
 const AddCampForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -417,7 +416,6 @@ const AddCampForm = () => {
                 width: "fit-content",
                 padding: "15px",
               }}
-              
             >
               Add Beneficiary
             </button>
