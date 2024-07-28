@@ -54,6 +54,9 @@ const Login = () => {
       if (role == "Doctor") {
         navigate("/addPatient");
       }
+      if (role == 'School') {
+        navigate("/updateDetail");
+      }
     } catch (error) {
       setLoading(false);
       // console.log(error.message)

@@ -8,6 +8,7 @@ import AddPatientDetails from "./Components/Doctor/AddPatientDetails";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
 import { Routes, Route } from "react-router-dom";
 import CampInfo from "./Components/Admin/CampInfo";
+import UpdateDetail from "./Components/Beneficiery/UpdateDetail";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/adminDashboard" element={<AdminDashboard />} />
       <Route path="/addPatient" element={<AddPatientDetails />} />
       <Route path="/campInfo" element={<CampInfo />} />
+      <Route path="/updateDetail" element={<UpdateDetail />} />
     </Routes>
   );
 };
