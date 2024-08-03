@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: white;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: auto;
+        }
+        #error {
+            color: red;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        td {
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech to Text</h1>
+    <button id="start">Start Recording</button>
+    <button id="stop">Stop Recording</button>
+    <div id="result">Result will be displayed here</div>
+    <div id="error"></div>
+
+    <script>
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const resultDiv = document.getElementById('result');
+        const errorDiv = document.getElementById('error');
+
+        let recognition;
+        let finalTranscript = '';
+
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+
+            recognition.onstart = function() {
+                resultDiv.innerHTML = 'Listening...';
+                errorDiv.innerHTML = '';
+            };
+
+            recognition.onresult = function(event) {
+                let interimTranscript = '';
+
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+
+                resultDiv.innerHTML = finalTranscript + '<i style="color:#999;">' + interimTranscript + '</i>';
+                console.log(finalTranscript); // Print the final transcript to the console
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Error occurred in recognition: ', event.error);
+                errorDiv.innerHTML = 'Error: ' + event.error;
+                if (event.error === 'not-allowed') {
+                    errorDiv.innerHTML += '. Please check your microphone permissions.';
+                } else if (event.error === 'network') {
+                    errorDiv.innerHTML += '. Please check your network connection.';
+                }
+            };
+
+            recognition.onend = function() {
+                resultDiv.innerHTML = 'Click "Start Recording" to try again.';
+            };
+
+            startButton.addEventListener('click', () => {
+                finalTranscript = ''; // Reset the final transcript
+                recognition.start();
+            });
+
+            stopButton.addEventListener('click', () => {
+                recognition.stop();
+
+                // Send the final transcript to the backend
+                fetch(`http://localhost:3000/generate?text=${encodeURIComponent(finalTranscript)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        displayJson(data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        errorDiv.innerHTML = 'Error: ' + error.message;
+                    });
+            });
+        } else {
+            resultDiv.innerHTML = 'Your browser does not support the Web Speech API. Please use Chrome.';
+        }
+
+        function displayJson(data) {
+            let html = '<table>';
+
+            function createTableFromJson(jsonObject, parentKey = '') {
+                for (const key in jsonObject) {
+                    if (jsonObject.hasOwnProperty(key)) {
+                        const value = jsonObject[key];
+                        if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
+                            html += `<tr><th colspan="2">${parentKey ? parentKey + '.' : ''}${key}</th></tr>`;
+                            createTableFromJson(value, key);
+                        } else if (Array.isArray(value)) {
+                            html += `<tr><th colspan="2">${parentKey ? parentKey + '.' : ''}${key}</th></tr>`;
+                            value.forEach((item, index) => {
+                                if (typeof item === 'object') {
+                                    createTableFromJson(item, `${key}[${index}]`);
+                                } else {
+                                    html += `<tr><td>${key}[${index}]</td><td>${item}</td></tr>`;
+                                }
+                            });
+                        } else {
+                            html += `<tr><td>${parentKey ? parentKey + '.' : ''}${key}</td><td>${value}</td></tr>`;
+                        }
+                    }
+                }
+            }
+
+            createTableFromJson(data);
+            html += '</table>';
+
+            resultDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
