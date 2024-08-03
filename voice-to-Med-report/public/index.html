@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +17,11 @@
             height: 100vh;
             margin: 0;
         }
+
         h1 {
             margin-bottom: 20px;
         }
+
         button {
             background-color: #007bff;
             color: white;
@@ -30,9 +33,11 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         #result {
             margin-top: 20px;
             padding: 20px;
@@ -41,30 +46,37 @@
             width: 80%;
             max-width: 800px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: auto;
         }
+
         #error {
             color: red;
             margin-top: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
         }
+
         th {
             background-color: #f2f2f2;
             text-align: left;
         }
+
         td {
             word-break: break-word;
         }
     </style>
 </head>
+
 <body>
     <h1>Speech to Text</h1>
     <button id="start">Start Recording</button>
@@ -86,12 +98,12 @@
             recognition.continuous = true;
             recognition.interimResults = true;
 
-            recognition.onstart = function() {
+            recognition.onstart = function () {
                 resultDiv.innerHTML = 'Listening...';
                 errorDiv.innerHTML = '';
             };
 
-            recognition.onresult = function(event) {
+            recognition.onresult = function (event) {
                 let interimTranscript = '';
 
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
@@ -106,7 +118,7 @@
                 console.log(finalTranscript); // Print the final transcript to the console
             };
 
-            recognition.onerror = function(event) {
+            recognition.onerror = function (event) {
                 console.error('Error occurred in recognition: ', event.error);
                 errorDiv.innerHTML = 'Error: ' + event.error;
                 if (event.error === 'not-allowed') {
@@ -116,7 +128,7 @@
                 }
             };
 
-            recognition.onend = function() {
+            recognition.onend = function () {
                 resultDiv.innerHTML = 'Click "Start Recording" to try again.';
             };
 
@@ -177,4 +189,5 @@
         }
     </script>
 </body>
+
 </html>
