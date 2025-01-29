@@ -21,3 +21,4 @@ https://drive.google.com/file/d/14OowMGCGuE_R8LYsp-QDgcEQsNOFM_oE/view?usp=drive
 
 ![image](https://github.com/user-attachments/assets/0fb8bcc6-6875-4f43-93f0-40ea63c22458)
 
+ <br /> <br /> The code ("Code") in this repository was created solely by the student teams during a coding competition hosted by JPMorgan Chase Bank, N.A. ("JPMC"). JPMC did not create or contribute to the development of the Code. This Code is provided AS IS and JPMC makes no warranty of any kind, express or implied, as to the Code, including but not limited to, merchantability, satisfactory quality, non-infringement, title or fitness for a particular purpose or use.
